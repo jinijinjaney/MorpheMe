@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "morpheme"
 version = "0.1.0"
+packages = [{include = "morpheme"}]  # Add this if missing!
 description = ""
 authors = ["jinijinjaney <liezyljaneclaros22@gmail.com>"]
 readme = "README.md"
