@@ -1,0 +1,365 @@
+ /* General Styles */
+ body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.custom-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: none;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #343a40 !important; /* Dark color by default */
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#templateSelect {
+    margin-bottom: 20px; /* Adds space below the dropdown */
+}
+
+#imageInput {
+    margin-bottom: 20px; /* Adds space below the file input */
+}
+
+#video-container {
+    margin-top: 30px; /* Moves the video section down */
+}
+
+img {
+    width: 60%;
+    border: 3px solid black;
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#choose-file-btn {
+    cursor: pointer;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 15px auto;
+}
+
+.file-upload-container button,
+#file-name {
+    flex: 1;
+    height: 45px; /* Same height */
+    text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+#choose-file-btn,
+#upload-btn {
+    height: 45px;
+    padding: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase; /* Optional: for a clean look */
+}
+
+#file-name {
+    font-size: 16px;
+    color: #333;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#start {
+    padding-top: 100px; /* Adjust as needed */
+}
+
+#start h2 {
+    margin-bottom: 20px; /* Adds space below the heading */
+}
+
+/* Popup Styling */
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(40, 167, 69, 0.95); /* Smooth Green */
+    color: white;
+    padding: 20px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popup-content i {
+    font-size: 24px;
+    color: white;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('https://source.unsplash.com/1600x900/?technology,face') center/cover no-repeat;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Features Section */
+#features {
+    background: #fff;
+    padding: 60px 0;
+}
+#features .col-md-4 {
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+#features .col-md-4:hover {
+    transform: translateY(-10px);
+}
+#features i {
+    color: #007bff;
+}
+
+/* Footer */
+footer {
+    background: #343a40;
+    color: white;
+}
+
+.hover-underline {
+    position: relative;
+}
+
+.hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.hover-underline:hover::after {
+    transform: scaleX(1);
+}
+
+/* Button Animation */
+.animate-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animate-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+}
+
+/* ✅ Mobile-Friendly Adjustments */
+@media (max-width: 576px) {
+    .file-upload-container {
+        flex-direction: column; /* Stack elements on small screens */
+        align-items: stretch; /* Make elements stretch to full width */
+    }
+
+    #choose-file-btn,
+    #upload-btn,
+    #file-name {
+        width: 100%; /* Full width for smaller screens */
+    }
+}
+
+#capture-btn:hover {
+    background-color: #4e4e4e; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Replace the current #result-container CSS with this */
+/* Also adjusting result container for less space */
+#result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px auto 30px auto; /* Reduced top and bottom margins */
+    padding: 10px; /* Reduced padding */
+    position: relative;
+}
+
+#result-img {
+    max-width: 95%; /* Increased from 90% */
+    max-height: 80vh; /* Increased from 70vh for a bigger display */
+    margin-top: 15px; /* Keeps proper spacing from text */
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    object-fit: contain; /* Ensures full visibility without cropping */
+}
+
+
+/* For larger screens, make the image even bigger */
+@media (min-width: 768px) {
+    #result-img {
+        max-width: 95%; /* Even larger on bigger screens */
+    }
+}
+
+#result-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Animation for result image when it appears */
+@keyframes resultAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result-img.visible {
+    animation: resultAppear 0.5s ease-out forwards;
+}
+
+/* Enhanced styling for SEE RESULT button with reduced margins and padding */
+#see-results-btn {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    padding: 10px 70px; /* Reduced padding (was 12px 90px) */
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: -20px;
+    margin-bottom: -20px;;
+    /*margin: 10px auto 15px auto; /* Reduced margins (was 20px auto 30px auto) */
+    display: none; /* Initially hidden */
+}
+
+#see-results-btn:hover {
+    background-color: #e04e2a;
+    transform: scale(1.05);
+}
+
+/* Add this to your style.css file */
+.download-container {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#download-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#download-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+#download-btn i {
+    font-size: 18px;
+}
+
+/* Hide download button initially */
+.download-container {
+    display: none;
+}
