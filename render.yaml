@@ -1,14 +1,11 @@
 services:
   - type: web
     name: MorpheMe
-    runtime: python
-    env: python
-    region: oregon  # Change if needed
-    plan: free  # Upgrade if needed
-    buildCommand: |
-      apt-get update && apt-get install -y cmake libopenblas-dev liblapack-dev libx11-dev libpng-dev libjpeg-dev
-      pip install -r requirements.txt
-    startCommand: "gunicorn app:app"
+    runtime: docker  # Change from python to docker
+    region: oregon   # Change if needed
+    plan: free       # Upgrade if needed
+    dockerfilePath: ./Dockerfile  # Use the Dockerfile
     envVars:
       - key: PYTHON_VERSION
         value: "3.8"
+    healthCheckPath: "/"
