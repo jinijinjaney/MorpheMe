@@ -7,10 +7,12 @@ authors = ["jinijinjaney <liezyljaneclaros22@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 flask = "^2.0.0"
 gunicorn = "^20.0"
 opencv-python-headless = "^4.9.0.80"  # ✅ Add this line
+numpy = "^2.2.3"
+dlib = "^19.24.2"  # ✅ Add this line
 
 [build-system]
 requires = ["poetry-core"]
