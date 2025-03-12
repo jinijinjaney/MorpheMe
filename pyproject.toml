@@ -12,7 +12,7 @@ flask = "^2.0.0"
 gunicorn = "^20.0"
 numpy = "^1.21.0"  # Compatible with Python 3.8
 opencv-python-headless = "^4.7.0.72"  # Compatible with numpy 1.21.x
-dlib = "^19.24.0"
+dlib = "^19.24.6"
 
 [build-system]
 requires = ["poetry-core"]
