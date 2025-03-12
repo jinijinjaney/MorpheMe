@@ -87,7 +87,6 @@ Pygments==2.19.1
 pyparsing==3.1.4
 python-dateutil==2.9.0.post0
 pytz==2024.2
-pywin32==308
 pyzmq==26.2.0
 requests==2.32.3
 requests-oauthlib==2.0.0
@@ -121,3 +120,8 @@ wcwidth==0.2.13
 Werkzeug==3.0.6
 wrapt==1.17.0
 zipp==3.20.2
+cmake
+openblas
+lapack
+libx11
+pillow
