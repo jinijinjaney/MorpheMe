@@ -1,5 +1,5 @@
 # Use an official Python image with system dependencies
-FROM python:3.8
+FROM python:3.9
 
 # Install required system dependencies
 RUN apt-get update && apt-get install -y \
