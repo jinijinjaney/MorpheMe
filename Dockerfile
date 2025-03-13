@@ -14,22 +14,25 @@ RUN apt-get update && apt-get install -y \
     libboost-thread-dev \
     python3-dev \
     git \
+    libdlib-dev \
+    python3-dlib \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Install prebuilt dlib instead of compiling
-RUN pip install dlib==19.24.2
-
 # Copy project files
 COPY . .
 
-# Upgrade pip (optional)
+# Upgrade pip
 RUN pip install --no-cache-dir --upgrade pip
 
 # Install PyTorch manually from the correct index
 RUN pip install --no-cache-dir torch==1.13.1+cpu --index-url https://download.pytorch.org/whl/cpu
+
+# Instead of pip install dlib, use the system dlib with a symlink approach
+# This creates a symlink from the system dlib to the Python site-packages
+RUN ln -s /usr/lib/python3/dist-packages/dlib* /usr/local/lib/python3.8/site-packages/
 
 # Remove dlib from requirements.txt to prevent reinstallation
 RUN sed -i '/dlib/d' requirements.txt
