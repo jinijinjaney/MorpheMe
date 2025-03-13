@@ -28,8 +28,12 @@ RUN pip install --no-cache-dir --upgrade pip
 # Install PyTorch manually from the correct index
 RUN pip install --no-cache-dir torch==1.13.1+cpu --index-url https://download.pytorch.org/whl/cpu
 
-# Install dlib with reduced compilation memory usage
-RUN pip install --no-cache-dir --verbose dlib==19.24.2 --install-option=--no-cuda --install-option=--no-avx --install-option=--yes USE_AVX_INSTRUCTIONS=0 --install-option=--yes DLIB_NO_GUI_SUPPORT=1
+# Install dlib with reduced memory usage
+ENV DLIB_USE_CUDA=0
+ENV USE_AVX_INSTRUCTIONS=0
+ENV DLIB_NO_GUI_SUPPORT=1
+ENV CMAKE_BUILD_PARALLEL_LEVEL=1
+RUN pip install --no-cache-dir dlib==19.24.2
 
 # Remove dlib from requirements.txt to prevent reinstallation
 RUN sed -i '/dlib/d' requirements.txt
