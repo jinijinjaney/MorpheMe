@@ -9,7 +9,11 @@ RUN apt-get update && apt-get install -y \
     libx11-dev \
     libpng-dev \
     libjpeg-dev \
- && rm -rf /var/lib/apt/lists/*
+    build-essential \
+    libboost-python-dev \
+    libboost-thread-dev \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
@@ -22,6 +26,12 @@ RUN pip install --no-cache-dir --upgrade pip
 
 # Install PyTorch manually from the correct index
 RUN pip install --no-cache-dir torch==1.13.1+cpu --index-url https://download.pytorch.org/whl/cpu
+
+# Manually install dlib from the official GitHub repository
+RUN pip install --no-cache-dir git+https://github.com/davisking/dlib.git
+
+# Remove dlib from requirements.txt to prevent reinstallation
+RUN sed -i '/dlib/d' requirements.txt
 
 # Install remaining dependencies
 RUN pip install --no-cache-dir -r requirements.txt
