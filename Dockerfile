@@ -1,7 +1,7 @@
-# Use an official Python image with system dependencies
+# Use Python 3.8 base image
 FROM python:3.8
 
-# Install required system dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     cmake \
     libopenblas-dev \
@@ -11,17 +11,23 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
 # Copy project files
 COPY . .
 
-# Install Python dependencies
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
+
+# Install PyTorch manually from the correct index
+RUN pip install --no-cache-dir torch==1.13.1+cpu --index-url https://download.pytorch.org/whl/cpu
+
+# Install remaining dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the Flask port
+# Expose Flask port
 EXPOSE 5000
 
-# Start the Flask app
+# Start Flask app
 CMD ["gunicorn", "app:app"]
