@@ -1,16 +1,15 @@
-# Use a lightweight base image
-FROM python:3.8-slim
+# Use the smallest possible base image
+FROM python:3.8-alpine
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install only essential system dependencies
+RUN apk add --no-cache \
     cmake \
-    libopenblas-dev \
-    liblapack-dev \
-    libx11-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
-    libjpeg-dev \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+    openblas-dev \
+    lapack-dev \
+    g++ \
+    && rm -rf /var/cache/apk/*
 
 # Set working directory
 WORKDIR /app
@@ -21,23 +20,17 @@ COPY . .
 # Upgrade pip
 RUN pip install --no-cache-dir --upgrade pip
 
-# Install PyTorch manually
-RUN pip install --no-cache-dir torch==1.13.1+cpu --index-url https://download.pytorch.org/whl/cpu
+# Install a lightweight prebuilt dlib version (no compilation)
+RUN pip install --no-cache-dir dlib==19.24.2
 
-# Install dlib with reduced memory usage
-ENV DLIB_USE_CUDA=0
-ENV USE_AVX_INSTRUCTIONS=0
-ENV DLIB_NO_GUI_SUPPORT=1
-RUN pip install --no-cache-dir dlib --global-option=build_ext --global-option="-j1"
-
-# Remove dlib from requirements.txt to prevent reinstallation
+# Remove dlib from requirements.txt to avoid reinstalling
 RUN sed -i '/dlib/d' requirements.txt
 
-# Install remaining dependencies
+# Install other Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose Flask port
 EXPOSE 5000
 
-# Start Flask app
-CMD ["gunicorn", "app:app"]
+# Start the Flask app with minimal resource usage
+CMD ["gunicorn", "--workers=1", "--threads=2", "--timeout=0", "app:app"]
